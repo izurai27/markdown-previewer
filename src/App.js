@@ -1,25 +1,48 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      h1:'Welcome to my React Markdown Previewer!',
+      h2:'This is a sub-heading...',
+
+    }    
+
+    this.handleChange = this.handleChange.bind('this');
+  }
+
+  handleChange(e){
+    this.setState({
+      h1:e.target.value,
+      h2:e.target.value
+    })
+    
+  }
+
+ 
+  
+  render(){
+    
+    return (
+      <div className='container'>
+         <textarea id="editor">
+           
+         </textarea>
+         <div id="preview">
+           <h1>{this.state.h1}</h1>
+           <h2>{this.state.h2}</h2>
+           
+         </div>
+      </div>
+     
+    )
+
+    
+  }
 }
+
 
 export default App;
