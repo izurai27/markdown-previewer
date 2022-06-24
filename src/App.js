@@ -1,41 +1,31 @@
 // import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import {marked} from 'marked';
+import initialvalue from './initialvalue';
 
 class App extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      h1:'Welcome to my React Markdown Previewer!',
-      h2:'This is a sub-heading...',
-
-    }    
-
-    this.handleChange = this.handleChange.bind('this');
+      value: initialvalue
+    }
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e){
-    this.setState({
-      h1:e.target.value,
-      h2:e.target.value
-    })
-    
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
   }
 
- 
-  
   render(){
-    
+  
     return (
       <div className='container'>
-         <textarea id="editor">
-           
-         </textarea>
-         <div id="preview">
-           <h1>{this.state.h1}</h1>
-           <h2>{this.state.h2}</h2>
-           
-         </div>
+        <textarea id="editor" value={this.state.value} onChange={this.handleChange} enabled />
+        
+        <div id="preview" dangerouslySetInnerHTML={{__html: marked.parse(this.state.value)}}></div>
+         
       </div>
      
     )
