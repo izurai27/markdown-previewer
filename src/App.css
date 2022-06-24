@@ -3,6 +3,7 @@ body{
   padding:0;
   width:100vw;
   border:none;
+  background-color: aquamarine;
 }
 
 .container{
@@ -10,17 +11,19 @@ body{
   flex-direction: row;
   height: fit-content;
   gap: 10px;
-  flex-wrap: wrap;
+  flex-wrap: unwrap;
   margin:auto;
 }
 
 #editor, #preview{
   width:50%;
   
+  
 }
 
 #editor{
   min-height: 300px;
+  background : whitesmoke
 }
 
 img{
